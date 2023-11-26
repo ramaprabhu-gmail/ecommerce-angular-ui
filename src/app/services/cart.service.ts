@@ -22,20 +22,17 @@ export class CartService {
 
     if (this.cartItems.length > 0) {
       // find the item in the cart based on item_id
-      for (let tempCartItem of this.cartItems) {
-        if (tempCartItem.id == cartItem.id) {
-          existingCartItem = tempCartItem;
-          break;
-        }
-      }
+      existingCartItem = this.cartItems.find(tempCartItem => tempCartItem.id === cartItem.id);
+
       // check if we found it
       alreadyExistsInCart = (existingCartItem != undefined);
 
     }
     if (alreadyExistsInCart) {
       // increment the quantity;
-      if (existingCartItem != undefined)
+      if (existingCartItem != undefined){
         existingCartItem.quantity++;
+    }
     } else {
       this.cartItems.push(cartItem);
     }
@@ -49,7 +46,7 @@ export class CartService {
     let totalQuantityValue: number = 0;
 
     for (let tempCartItem of this.cartItems) {
-      totalPriceValue += tempCartItem.unitPrice;
+      totalPriceValue += tempCartItem.quantity * tempCartItem.unitPrice;
       totalQuantityValue += tempCartItem.quantity;
     }
 
