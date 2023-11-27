@@ -101,6 +101,11 @@ export class CheckoutComponent implements OnInit {
     console.log("Handling the submit button");
     console.log(this.checkoutFormGroup.get('customer')?.value);
     console.log(this.checkoutFormGroup.get('customer')?.value.email);
+    
+    console.log('The shipping address country is ' + this.checkoutFormGroup.get('shippingAddress')?.value.country.name);
+    console.log('The shipping address state is ' + this.checkoutFormGroup.get('shippingAddress')?.value.state.name);
+    console.log('The billing address country is ' + this.checkoutFormGroup.get('billingAddress')?.value.country.name);
+    console.log('The billing address state is ' + this.checkoutFormGroup.get('billingAddress')?.value.state.name);
   }
 
   handleMonthsAndYears(){
