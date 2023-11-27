@@ -54,9 +54,14 @@
                             <p>Total Quantity: {{ totalQuantity}}</p>
                             <p>Shipping:FREE</p>
                             <p>Total price: {{totalPrice | currency:'USD'}}</p>
+                            <p>
+                                <a routerLink="/checkout" class="btn btn-primary">Checkout</a>
+                            </p>
                         </td>
                     </tr>
+                   
                 </table>
+                
             </div>
             <!-- if cart is empty display cart empty message-->
             <div *ngIf="cartItems.length == 0" class="alert alert-warning col-md-12" role="alert" >
