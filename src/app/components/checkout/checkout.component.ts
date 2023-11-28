@@ -33,7 +33,7 @@ export class CheckoutComponent implements OnInit {
         firstName: new FormControl('',[Validators.required,Validators.minLength(2)]),
         lastName: new FormControl('',[Validators.required,Validators.minLength(2)]),
         email: new FormControl('',[Validators.required, // we are using pattern instead of Validator.email for more specific pattern check
-                        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4]$')]) 
+                        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]) 
       }),
       shippingAddress: this.formBuilder.group({
         street: [''],
@@ -109,6 +109,10 @@ export class CheckoutComponent implements OnInit {
 
   onSubmit(){
     console.log("Handling the submit button");
+
+    if(this.checkoutFormGroup.invalid){
+      this.checkoutFormGroup.markAllAsTouched(); // touching all fields triggers display of error messages
+    }
     console.log(this.checkoutFormGroup.get('customer')?.value);
     console.log(this.checkoutFormGroup.get('customer')?.value.email);
 
